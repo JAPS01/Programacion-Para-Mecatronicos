@@ -1,0 +1,73 @@
+#include <stdio.h>
+#include <conio.h>
+
+// declaracion de variables
+char exi, tipc[2];
+double res[3], rest[3];
+
+// Funciones de la calculadora de circuitos 
+void serie()
+{
+    
+    rest[0] = (res[0]+res[1]);
+}
+
+void paralelo() 
+{
+    rest[0] = (res[0]*res[1])/( res[0]+res[1]);
+}
+
+void serie1() 
+{
+    rest[1] = (rest[0]+res[0]);
+}
+void paralelo1()
+{
+    rest[1] = (rest[0]*res[0])/(rest[0]+res[0]);
+}
+
+int main() {
+
+
+        printf("Calculadora de circuitos Mixtos\nPara saber como esta ordenado el circuito debe de colocar aRxaRx para serie y aRxRx para paralelos\nnota despues de introducir los dos primeros valores el primer valor sera el resultado y solo de debe de introducir la segunda letra y el valor de la resistencia\nintroduzca los valores de las resistencias");
+        
+        scanf("%c %lf %c %lf", &tipc[0], &res[0], &tipc[1], &res[1]);
+        
+        switch (tipc[0])
+        {
+            case 'a':
+
+                if (tipc[1]=='b')
+                {
+                    paralelo();
+                    printf("Rt = %.2lf", rest[0]);
+                }
+                else
+                {
+                    serie();
+                    printf("Rt = %.2lf", rest[0]);
+                }
+                do
+                {
+                        scanf("\n%c %lf", &tipc[0], &res[0]);
+
+                        if (tipc[0]=='b')
+                        {
+                            paralelo1();
+                            printf("RT = %.2lf", rest[1]);
+                        }
+                        else 
+                        {
+                            serie1();
+                            printf("RT = %.2lf", rest[1]);
+                        }
+                } while (exi!=1);
+                               
+                break;
+            default:
+                printf("no valido");
+                break;
+        }
+    
+    return 0;
+}
