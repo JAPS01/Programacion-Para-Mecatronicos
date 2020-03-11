@@ -1,73 +1,98 @@
-#include <stdio.h>
 #include <conio.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <windows.h>
 
-// declaracion de variables
-char exi, tipc[2];
-double res[3], rest[3];
+char nodo[100];
+int res[100];
+int sum;
+int i;
+int j;
+int l;
+int A = 0;
+int k;
+int m;
+int v = 0;
 
-// Funciones de la calculadora de circuitos 
-void serie()
+void tipo_de_conexion() // Aqui se establece si son series o paralelos
 {
+    if ((nodo[k] == 'a') && (nodo[k+2] == 'a'))
+    {
+        A = 1;
+    }
+    else
+    {
+        A = 0;
+    }
     
-    rest[0] = (res[0]+res[1]);
+    k++;
+    
 }
-
-void paralelo() 
+void detectar_nodos() // Se determina si los nodos estan en serie o paralelo 
 {
-    rest[0] = (res[0]*res[1])/( res[0]+res[1]);
-}
-
-void serie1() 
-{
-    rest[1] = (rest[0]+res[0]);
-}
-void paralelo1()
-{
-    rest[1] = (rest[0]*res[0])/(rest[0]+res[0]);
-}
-
-int main() {
-
-
-        printf("Calculadora de circuitos Mixtos\nPara saber como esta ordenado el circuito debe de colocar aRxaRx para serie y aRxRx para paralelos\nnota despues de introducir los dos primeros valores el primer valor sera el resultado y solo de debe de introducir la segunda letra y el valor de la resistencia\nintroduzca los valores de las resistencias");
-        
-        scanf("%c %lf %c %lf", &tipc[0], &res[0], &tipc[1], &res[1]);
-        
-        switch (tipc[0])
+    while (nodo[i] != 0) // buscar una forma de que solo se repita las veces necesarias
+    {
+        if (A == 1)
         {
-            case 'a':
-
-                if (tipc[1]=='b')
-                {
-                    paralelo();
-                    printf("Rt = %.2lf", rest[0]);
-                }
-                else
-                {
-                    serie();
-                    printf("Rt = %.2lf", rest[0]);
-                }
-                do
-                {
-                        scanf("\n%c %lf", &tipc[0], &res[0]);
-
-                        if (tipc[0]=='b')
-                        {
-                            paralelo1();
-                            printf("RT = %.2lf", rest[1]);
-                        }
-                        else 
-                        {
-                            serie1();
-                            printf("RT = %.2lf", rest[1]);
-                        }
-                } while (exi!=1);
-                               
-                break;
-            default:
-                printf("no valido");
-                break;
+            sum = res[v]+res[v+1];
         }
+        else
+        {
+            sum = res[v]-res[v+1];
+        }
+        v++;
+        i++;
+    }
+}
+
+void concatenar() // Se convierte el valor ascii a el valor introducido
+{
+    while (res[j] != 0)
+    {
+        res[j] = res[j] - '0';
+        j++;
+    }
+}
+
+void tomar_numeros() // Se toman los valores de los nodos y las resistencias
+{
+    do
+    {
+        nodo[m] = getche();
+        res[m] = getche();
+        m++;
+        nodo[m] = getche();
+        res[m] = getche();
+        m++;
+        nodo[m] = getche();
+    } while (nodo[m] =! 'r');
+    m++;
+}
+void limpiar_variables()
+{
+
+    A = 0;
+    for (l = 0; l < 5; l++)
+    {
+        res[l] = 0;
+    }
+    sum = 0;
     
-    return 0;
+}
+
+
+int main() // se corre el programa 
+{
+    printf("introduzca el Circuito\n");
+    while (1)
+    {
+        fflush(stdin);
+        limpiar_variables();
+        tomar_numeros();
+        concatenar();
+        tipo_de_conexion();
+        detectar_nodos();
+        printf("\n%i\n", sum);
+    }
+    
 }
