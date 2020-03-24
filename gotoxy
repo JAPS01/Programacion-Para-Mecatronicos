@@ -1,0 +1,77 @@
+#include<stdio.h>
+#include<conio.h>
+#include<stdio.h>  
+#include<windows.h> 
+
+
+int x = 35;
+int y = 15;
+
+ void gotoxy(int x,int y)
+ {  
+      HANDLE hcon;  
+      hcon = GetStdHandle(STD_OUTPUT_HANDLE);  
+      COORD dwPos;  
+      dwPos.X = x;  
+      dwPos.Y= y;  
+      SetConsoleCursorPosition(hcon,dwPos);  
+ }  
+
+void jugador()
+{
+
+    char tecla;
+
+    do
+    {
+        gotoxy(x,y);
+        printf("O");
+
+        tecla=getch();
+        if (tecla=='d')
+        {
+            x++;
+        }
+        if (tecla=='a')
+        {
+            x--;
+        }
+        if (tecla=='s')
+        {
+            y++;
+        }
+        if (tecla=='w')
+        {
+            y--;
+        }      
+        system("cls");
+
+            gotoxy(5,10);
+            printf("x");
+            gotoxy(10,5);
+            printf("x");
+            gotoxy(20,35);
+            printf("x");
+            gotoxy(8,18);
+            printf("x");
+            gotoxy(9,11);
+            printf("x");
+            gotoxy(4,12);
+            printf("x");
+ 
+
+
+    } while (y != 5);
+}
+
+main(void)
+{   
+    do
+    {
+        jugador(); 
+    } while (x!=10);
+    
+    gotoxy(0,0);
+    printf("perdiste");
+    getch();
+}
