@@ -22,7 +22,12 @@ int killenemy;
 int disparo_repetido = 0;
 int confirm[7];
 int shot[2];
-int camb;
+char camb;
+int k = 0;
+int lok;
+int repetido = 0;
+int confi[7];
+
 
 
  void gotoxy(int x,int y)
@@ -92,6 +97,7 @@ void mapenemy()
             
             enemigo[7][4] = 32;
             enemigo[8][4] = 32;
+
             enemigo[1][5] = 32;
             enemigo[1][6] = 32;
 
@@ -114,8 +120,6 @@ void mapenemy()
 
         srand(time(NULL));      //aqui damos una ubicacion Ramdon al enemigo
         pos = (rand() % 3);
-
-        pos = 0;
         if (pos == 0)
         {
             enemigo[2][2] = 178;
@@ -568,6 +572,7 @@ void disparos()
                         system("cls");
                     }
                 }
+
                 Sleep(1000);
                 system("cls");
                 // turno de la maquina 
@@ -597,6 +602,309 @@ void disparos()
                 remapgame();
                 gamer();
                 Sleep(2500);
+                // cambiar para el enemigo
+
+                if (lok == 0) // posicion del mapa 1
+                {
+                    if ((repetido == 0) && (confi[0] == 0))
+                    {
+                        if ((shot[0] == 3) && (shot[1] == 3)) // primera posicion nave 1
+                        {
+                            gotoxy(50,17);
+                            printf("le diste");
+                            Sleep(1500);
+                            pt = 1;
+                            killplayer += 1;
+                            confi[0] = 1;
+                            // mapa[dis[0]][dis[1]] = 157;
+                            system("cls");
+                        }
+                    }
+
+                    if ((repetido == 0) && (confi[1] == 1))
+                    {
+                        if ((shot[0] == 4) && (shot[1] == 3)) // segunda posicion nave 1
+                        {
+                            gotoxy(50,17);
+                            printf("le diste");
+                            Sleep(1500);
+                            pt = 1;
+                            killenemy += 1;
+                            confi[1] = 2;
+                            system("cls");
+                        }
+                    }
+
+                    if ((repetido == 0) && (confi[2] == 2))
+                    {
+                        if ((shot[0] == 4) && (shot[1] == 7)) // primera posicion nave 2
+                        {
+                            gotoxy(50,17);
+                            printf("le diste");
+                            Sleep(1500);
+                            pt = 1;
+                            killenemy += 1;
+                            confi[2] = 3;
+                            system("cls");
+                        }
+                    }
+
+                    if ((repetido == 0) && (confi[3] == 3))
+                    {
+                        if ((shot[0] == 5) && (shot[1] == 7)) // segunda posicion nave 2
+                        {
+                            gotoxy(50,17);
+                            printf("le diste");
+                            Sleep(1500);
+                            pt = 1;
+                            killenemy += 1;
+                            confi[3] = 4;
+                            system("cls");
+                        }
+                    }
+
+                    if ((repetido == 0) && (confi[0] == 0))
+                    {
+                        if ((shot[0] == 6) && (shot[1] == 7)) // tercera posicion nave 2
+                        {
+                            gotoxy(50,17);
+                            printf("le diste");
+                            Sleep(1500);
+                            pt = 1;
+                            killenemy += 1;
+                            confi[4];
+                            system("cls");
+                        }
+                    }
+
+                    if ((repetido == 0) && (confi[0] == 0))
+                    {
+                        if ((shot[0] == 8) && (shot[1] == 8)) // primera posicion nave 3
+                        {
+                            gotoxy(50,17);
+                            printf("le diste");
+                            Sleep(1500);
+                            pt = 1;
+                            killenemy += 1;
+                            confi[5] = 6;
+                            system("cls");
+                        }
+                    }
+                    if ((repetido == 0) && (confi[0] == 0))
+                    {
+                        if ((shot[0] == 9) && (shot[1] == 8)) // segunda posicion nave 3
+                        {
+                            gotoxy(50,17);
+                            printf("le diste");
+                            Sleep(1500);
+                            pt = 1;
+                            killenemy += 1;
+                            confi[6] = 7;
+                            system("cls");
+                        }
+                    }
+                }
+
+                if (lok == 1) // posicion del mapa 2
+                {
+                    if ((repetido == 0) && (confi[0] == 0))
+                    {
+                        if ((shot[0] == 7) && (shot[1] == 3)) // primera posicion nave 1
+                        {
+                            gotoxy(50,17);
+                            printf("le diste");
+                            Sleep(1500);
+                            pt = 1;
+                            ++killenemy;
+                            confi[0] = 1;
+                            system("cls");
+                        }
+                    }
+
+                    if ((repetido == 0) && (confi[1] == 1))
+                    {
+                        if ((shot[0] == 8) && (shot[1] == 3)) // segunda posicion nave 1
+                        {
+                            gotoxy(50,17);
+                            printf("le diste");
+                            Sleep(1500);
+                            pt = 1;
+                            ++killenemy;
+                            confi[1] = 2;
+                            system("cls");
+                        }
+                    }
+
+                    if ((repetido == 0) && (confi[2] == 2))
+                    {
+                        if ((shot[0] == 2) && (shot[1] == 6)) // primera posicion nave 2
+                        {
+                            gotoxy(50,17);
+                            printf("le diste");
+                            Sleep(1500);
+                            pt = 1;
+                            ++killenemy;
+                            confi[2] = 3;
+                            system("cls");
+                        }
+                    }
+
+                    if ((repetido == 0) && (confi[3] == 3))
+                    {
+                        if ((shot[0] == 2) && (shot[1] == 7)) // segunda posicion nave 2
+                        {
+                            gotoxy(50,17);
+                            printf("le diste");
+                            Sleep(1500);
+                            pt = 1;
+                            ++killenemy;
+                            confi[3] = 4;
+                            system("cls");
+                        }
+                    }
+
+                    if ((repetido == 0) && (confi[4] == 4))
+                    {
+                        if ((shot[0] == 2) && (shot[1] == 8)) // tercera posicion nave 2
+                        {
+                            gotoxy(50,17);
+                            printf("le diste");
+                            Sleep(1500);
+                            pt = 1;
+                            ++killenemy;
+                            confi[4];
+                            system("cls");
+                        }
+                    }
+
+                    if ((repetido == 0) && (confi[5] == 5))
+                    {
+                        if ((shot[0] == 4) && (shot[1] == 8)) // primera posicion nave 3
+                        {
+                            gotoxy(50,17);
+                            printf("le diste");
+                            Sleep(1500);
+                            pt = 1;
+                            ++killenemy;
+                            confi[5] = 6;
+                            system("cls");
+                        }
+                    }
+                    if ((repetido == 0) && (confi[6] == 6))
+                    {
+                        if ((shot[0] == 4) && (shot[1] == 9)) // segunda posicion nave 3
+                        {
+                            gotoxy(50,17);
+                            printf("le diste");
+                            Sleep(1500);
+                            pt = 1;
+                            ++killenemy;
+                            confi[6] = 7;
+                            system("cls");
+                        }
+                    }
+                }
+                
+                if (lok == 2) // posicion del mapa 2
+                {
+                    if ((repetido == 0) && (confi[0] == 0))
+                    {
+                        if ((shot[0] == 5) && (shot[1] == 2)) // primera posicion nave 1
+                        {
+                            gotoxy(50,17);
+                            printf("le diste");
+                            Sleep(1500);
+                            pt = 1;
+                            ++killenemy;
+                            confirm[0] = 1;
+                            system("cls");
+                        }
+                    }
+
+                    if ((repetido == 0) && (confi[0] == 0))
+                    {
+                        if ((shot[0] == 6) && (shot[1] == 2)) // segunda posicion nave 1
+                        {
+                            gotoxy(50,17);
+                            printf("le diste");
+                            Sleep(1500);
+                            pt = 1;
+                            ++killenemy;
+                            confirm[1] = 2;
+                            system("cls");
+                        }
+                    }
+
+                    if ((repetido == 0) && (confi[0] == 0))
+                    {
+                        if ((shot[0] == 6) && (shot[1] == 5)) // primera posicion nave 2
+                        {
+                            gotoxy(50,17);
+                            printf("le diste");
+                            Sleep(1500);
+                            pt = 1;
+                            ++killenemy;
+                            confirm[2] = 3;
+                            system("cls");
+                        }
+                    }
+
+                    if ((repetido == 0) && (confi[0] == 0))
+                    {
+                        if ((shot[0] == 7) && (shot[1] == 5)) // segunda posicion nave 2
+                        {
+                            gotoxy(50,17);
+                            printf("le diste");
+                            Sleep(1500);
+                            pt = 1;
+                            ++killenemy;
+                            confirm[3] = 4;
+                            system("cls");
+                        }
+                    }
+
+                    if ((repetido == 0) && (confi[0] == 0))
+                    {
+                        if ((shot[0] == 8) && (shot[1] == 5)) // tercera posicion nave 2
+                        {
+                            gotoxy(50,17);
+                            printf("le diste");
+                            Sleep(1500);
+                            pt = 1;
+                            ++killenemy;
+                            confirm[4];
+                            system("cls");
+                        }
+                    }
+
+                    if ((repetido == 0) && (confi[0] == 0))
+                    {
+                        if ((shot[0] == 8) && (shot[1] == 7)) // primera posicion nave 3
+                        {
+                            gotoxy(50,17);
+                            printf("le diste");
+                            Sleep(1500);
+                            pt = 1;
+                            ++killenemy;
+                            confirm[5] = 6;
+                            system("cls");
+                        }
+                    }
+                    if ((repetido == 0) && (confi[0] == 0))
+                    {
+                        if ((shot[0] == 8) && (shot[1] == 8)) // segunda posicion nave 3
+                        {
+                            gotoxy(50,17);
+                            printf("le diste");
+                            Sleep(1500);
+                            pt = 1;
+                            ++killenemy;
+                            confirm[6] = 7;
+                            system("cls");
+                        }
+                    }
+                }
+
                 
                 if (killenemy == 7)
                 {
@@ -621,31 +929,77 @@ void disparos()
 
 void posjuga()
     {
-        do
-        {
+                lok = 1;
+                jugador[7][3] = 178;
+                jugador[8][3] = 178;
+
+                jugador[2][6] = 178;
+                jugador[2][7] = 178;
+                jugador[2][8] = 178;
+                
+                jugador[4][8] = 178;
+                jugador[4][9] = 178;
+            gotoxy(55,5);
+            printf("Mapa del Jugador");
+        for (i = 0; i < 11; i++)
+            {
+                
+                for (j = 0; j < 11; j++)
+                {
+                    gotoxy(50+i,j+6);
+                    printf("%c", jugador[i][j]); //aqui va enemigo en lugar de mapa
+                }
+                printf("\n");
+            }
+
             gotoxy(50,3);
-            printf("Quiere cambiar la posicion del jugador");
+            printf("Quiere cambiar la posicion del jugador (S)i/(N)o");
             gotoxy(50,4);
             camb = getche();
 
-            if (camb == 83)
+        do
+        {
+
+            camb += k;
+            
+        for (i = 0; i < 11; i++)
             {
-                camb -= 82;
+                
+                for (j = 0; j < 11; j++)
+                {
+                    gotoxy(50+i,j+6);
+                    printf("%c", jugador[i][j]); //aqui va enemigo en lugar de mapa
+                }
+                printf("\n");
             }
+
             if (camb == 115)
             {
-                camb == 114;
-            }
+                // restablecemos a origen 
+                jugador[7][3] = 32;
+                jugador[8][3] = 32;
 
-            else 
-            {
-                camb = 0;
-            }
+                jugador[2][6] = 32;
+                jugador[2][7] = 32;
+                jugador[2][8] = 32;
+                
+                jugador[4][8] = 32;
+                jugador[4][9] = 32;
 
-            if (camb == 0)
-            {
+
+                jugador[5][2] = 32;
+                jugador[6][2] = 32;
+
+                jugador[6][5] = 32;
+                jugador[7][5] = 32;
+                jugador[8][5] = 32;
+                
+                jugador[8][8] = 32;
+                jugador[7][8] = 32;
+
+                // posicion seleccionada
                 jugador[3][3] = 178;
-                jugador[4][2] = 178;
+                jugador[4][3] = 178;
 
                 jugador[4][7] = 178;
                 jugador[5][7] = 178;
@@ -653,12 +1007,115 @@ void posjuga()
                 
                 jugador[8][8] = 178;
                 jugador[9][8] = 178;
+                lok = 0;
+                ++k;
             }
-            camb = 0;
+
+            if (camb == 116)
+            {
+
+                // restablecemos a origen
+                jugador[5][2] = 32;
+                jugador[6][2] = 32;
+
+                jugador[6][5] = 32;
+                jugador[7][5] = 32;
+                jugador[8][5] = 32;
+                
+                jugador[8][8] = 32;
+                jugador[7][8] = 32;
+
+                jugador[3][3] = 32;
+                jugador[4][3] = 32;
+
+                jugador[4][7] = 32;
+                jugador[5][7] = 32;
+                jugador[6][7] = 32;
+                
+                jugador[8][8] = 32;
+                jugador[9][8] = 32;
+
+                // posicion seleccionada
+                jugador[7][3] = 178;
+                jugador[8][3] = 178;
+
+                jugador[2][6] = 178;
+                jugador[2][7] = 178;
+                jugador[2][8] = 178;
+                
+                jugador[4][8] = 178;
+                jugador[4][9] = 178;
+                lok = 1;
+                ++k;
+            }
             
 
-        } while( );
+            if (camb == 117)
+            {
+                
+                // restablecemos a origen
+                jugador[3][3] = 32;
+                jugador[4][3] = 32;
+
+                jugador[4][7] = 32;
+                jugador[5][7] = 32;
+                jugador[6][7] = 32;
+                
+                jugador[8][8] = 32;
+                jugador[9][8] = 32;
+
+                jugador[7][3] = 32;
+                jugador[8][3] = 32;
+
+                jugador[2][6] = 32;
+                jugador[2][7] = 32;
+                jugador[2][8] = 32;
+                
+                jugador[4][8] = 32;
+                jugador[4][9] = 32;
+
+                // posicion selecionada 
+                jugador[5][2] = 178;
+                jugador[6][2] = 178;
+
+                jugador[6][5] = 178;
+                jugador[7][5] = 178;
+                jugador[8][5] = 178;
+                
+                jugador[8][8] = 178;
+                jugador[7][8] = 178;
+                lok = 2;
+                ++k;
+            }
+            gotoxy(55,5);
+            printf("Mapa del Jugador");
+        for (i = 0; i < 11; i++)
+            {
+                
+                for (j = 0; j < 11; j++)
+                {
+                    gotoxy(50+i,j+6);
+                    printf("%c", jugador[i][j]); //aqui va enemigo en lugar de mapa
+                }
+                printf("\n");
+            }
+            if (tolower(camb) != 110)
+            {
+                gotoxy(50,18);
+                printf("Cambiar otra vez (S)i/(N)o");
+                gotoxy(50,19);
+                camb = getche();
+            }
+            if (k == 3)
+            {
+                k = 0;
+            }
+
+        } while(tolower(camb) != 110);
+        Sleep(1500);
+        system("cls");
     }
+
 void juego()
     {
         pt = 0;
@@ -666,6 +1123,7 @@ void juego()
         posjuga();
         mapenemy();
         disparos();
+
         if (killenemy == 7)
         {
             gotoxy(50,5);
@@ -682,12 +1140,22 @@ void juego()
             printf("  %c_____|  %c__,_| |_| |_|  %c__,_| |___/  %c__|  %c___|", 92, 92, 92 , 92, 92);
             Sleep(2500);
         }
+
         if (killplayer == 7)
         {
-            gotoxy(50,18);
-            printf("perdiste");
+            gotoxy(50,5);
+            printf(".______    _______ .______       _______   __       _______..___________. _______ ");
+            gotoxy(50,6);
+            printf("|   _  %c  |   ____||   _  %c     |       %c |  |     /       ||           ||   ____|", 92, 92, 92);
+            gotoxy(50,7);
+            printf("|  |_)  | |  |__   |  |_)  |    |  .--.  ||  |    |   (----``---|  |----`|  |__   ");
+            gotoxy(50,8);
+            printf("|   ___/  |   __|  |      /     |  |  |  ||  |     %c   %c        |  |     |   __|  ", 92, 92);
+            gotoxy(50,9);
+            printf("|  |      |  |____ |  |%c  %c----.|  '--'  ||  | .----)   |       |  |     |  |____ ", 92, 92);
+            gotoxy(50,10);
+            printf("| _|      |_______|| _| `._____||_______/ |__| |_______/        |__|     |_______|");
             Sleep(2500);
-            system("cls");
         }
     }
 
