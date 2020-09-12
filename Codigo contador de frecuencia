@@ -1,0 +1,47 @@
+/* 
+Codigo para contador de frecuencia con arduino
+joanperaltaariel@gmail.com
+@joan_peralta8
+Proyecto para hacer un contador de frecuencia con arduino para concurso de diseño de PCB IDEATRONIC
+*/
+#include <Wire.h>      // libreria de comunicacion por I2C
+#include <LCD.h>      // libreria para funciones de LCD
+#include <LiquidCrystal_I2C.h>    // libreria para LCD por I2C
+
+LiquidCrystal_I2C lcd (0x27, 2, 1, 0, 4, 5, 6, 7); // DIR, E, RW, RS, D4, D5, D6, D7
+const int pulsePin = 8; // Señal de entrada conectada al Pin 8 de Arduino
+
+int pulseHigh; // Variable entera para capturar el tiempo alto del pulso entrante
+int pulseLow; // Variable entera para capturar el tiempo bajo del pulso entrante
+float pulseTotal; // Variable flotante para capturar el tiempo total del pulso entrante
+float frequency; // Frecuencia calculada
+void setup()
+{
+  pinMode(pulsePin,INPUT);
+  lcd.setBacklightPin(3,POSITIVE);  // puerto P3 de PCF8574 como positivo
+  lcd.setBacklight(HIGH);   // habilita iluminacion posterior de LCD
+  lcd.begin(16, 2);     // 16 columnas por 2 lineas para LCD 1602A
+  lcd.clear();      // limpia pantalla
+  lcd.print("NEOTRONIC");
+  lcd.setCursor(0,1); 
+  lcd.print("JOAN PERALTA");
+  delay(5000); 
+}
+void loop()
+{
+    lcd.setCursor(0,0);
+    lcd.print("La frecuencia es    ");
+    lcd.setCursor(0,1);
+    lcd.print("                ");
+    
+    pulseHigh = pulseIn(pulsePin,HIGH);
+    pulseLow = pulseIn(pulsePin,LOW);
+    
+    pulseTotal = pulseHigh + pulseLow; // Periodo de tiempo del pulso en microsegundos
+    frequency=1000000/pulseTotal; // Frecuencia en hercios (Hz)
+    
+    lcd.setCursor(0,1);
+    lcd.print(frequency);
+    lcd.print(" Hz");
+    delay(500);
+}
